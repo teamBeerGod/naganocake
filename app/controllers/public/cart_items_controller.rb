@@ -5,7 +5,7 @@ class Public::CartItemsController < ApplicationController
   def update
   end
 
-  def destroyde
+  def destroyd
   end
 
   def destroy_all
