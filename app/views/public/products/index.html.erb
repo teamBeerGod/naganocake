@@ -1,2 +1,19 @@
-<h1>Public::Products#index</h1>
-<p>Find me in app/views/public/products/index.html.erb</p>
+<h1>商品一覧</h1>
+<!-- 全＊件の出し方 -->
+
+<!-- ジャンル検索の部分テンプレート作成要 -->
+  <table>
+
+    <tr>
+      <% @products.each do |product| %>
+      <td>
+        <%= link_to products_path(product.id) do %>
+          <%= image_tag product.get_image %>
+        <% end %>
+        <p><%= product.name %></p>
+        <p><span>¥</span><span><%= product.price_without_tax %></span><span>(税込)</span></p>
+      </td>
+      <% end %>
+    </tr>
+    
+  </table>

@@ -1,2 +1,15 @@
-<h1>Public::Products#show</h1>
-<p>Find me in app/views/public/products/show.html.erb</p>
+<table>
+  <th>
+    <%= image_tag product.get_image %>
+  </th>
+  <th>
+    <p><%= product.name %></p>
+    <p><%= product.introduction %></p>
+    <p><%= product.price_without_tax %></p>
+  </th>
+</table>
+
+<!-- カートへ追加ボタンの作り方確認要　-->
+<!-- createアクション作成要？ -->
+  <%= form_with model: Product.new do |f| %>
+	<% end %>
