@@ -34,7 +34,7 @@ Genre.create!(name: "cake")
 Genre.create!(name: "cookie")
 
 p '==================== products create ===================='
-product1 = Product.create!(
+Product.create!(
   genre_id: 1,
   name: "チョコケーキ",
   introduction: "チョコ味",
@@ -42,9 +42,8 @@ product1 = Product.create!(
   is_active: true,
   image: File.open('app/assets/images/no_image.jpg')
 )
-product1.image.attach(io: File.open(Rails.root.join('app/assets/images/test.jpg')), filename: 'test.jpg')
 
-product2 = Product.create!(
+Product.create!(
   genre_id: 2,
   name: "チョコクッキー",
   introduction: "チョコ味",
@@ -52,7 +51,7 @@ product2 = Product.create!(
   is_active: true
   image: File.open('app/assets/images/no_image.jpg')
 )
-product2.image.attach(io: File.open(Rails.root.join('app/assets/images/test.jpg')), filename: 'test.jpg')
+
 p '==================== cart_items create ===================='
 CartItem.create!(
   product_id: 1,
@@ -80,6 +79,3 @@ OrderDetail.create!(
   quantity: 3,
   making_status: 0
 )
-
-user.avatar.attach(io: File.open(Rails.root.join('app/assets/images/no_image.jpg')),
-                  filename: 'no_image.jpg')
