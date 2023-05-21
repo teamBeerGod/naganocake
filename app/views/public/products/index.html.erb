@@ -1,20 +1,24 @@
-<h1>商品一覧</h1>
-<!-- 全＊件の出し方 -->
+<div>
+  <span><h1>商品一覧</h1></span>
+  <span><h5>(全<%= Product.count %>件)</h5></sapn>
+</div>
 
 <!-- ジャンル検索の部分テンプレート作成要 -->
-  <table>
 
+  <table>
     <tr>
       <% @products.each do |product| %>
       <td>
-        <!-- 商品投稿ができるようになったら下記を有効にする -->
-        <!-- %= link_to products_path(product.id) do % -->
-          <%= image_tag @products.get_image %> 
-        <!-- % end % -->
+        <%= link_to product_path(product) do %>
+          <% if product.image.attached? %>
+              <%= image_tag product.image, size: "200x200" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "200x200" %>
+          <% end %>
+        <% end %>
         <p><%= product.name %></p>
         <p>¥<%= product.price_without_tax %>(税込)</p>
       </td>
       <% end %>
     </tr>
-    
   </table>

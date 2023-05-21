@@ -1,6 +1,12 @@
+<!-- ジャンル検索の部分テンプレート作成要 -->
+
 <table>
   <th>
-    <%= image_tag @product.image , size: "50x50"%>
+    <% if @product.image.attached? %>
+        <%= image_tag @product.image, size: "200x200" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "200x200" %>
+    <% end %>
   </th>
   <th>
     <p><%= @product.name %></p>
@@ -11,7 +17,7 @@
 
 <!-- カートへ追加ボタンの作り方確認要　-->
 <!-- createアクション作成要？ -->
-  <%= form_with model: @cart_item url: cart_items_path, method: :post do |f| %>
+  <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
     <%= f.select :count, *[1..100], {include_blank: '個数選択', selected: '個数選択'}%>
     <%= f.submit "カートに入れる" %>
 	<% end %>
