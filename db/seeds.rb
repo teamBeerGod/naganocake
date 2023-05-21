@@ -48,6 +48,7 @@ Product.create!(
   introduction: "チョコ味",
   price_without_tax: "100",
   is_active: true,
+
 )
 
 p '==================== cart_items create ===================='
