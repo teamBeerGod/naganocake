@@ -1,41 +1,47 @@
-<h3>会員詳細</h3>
-  <table>
-     <thead>
+<h3 class="ml-5">会員詳細</h3>
+
+ <%= form_with model: [:admin,@customer] do |f| %>
+   <table class="table">
+
         <tr>
           <th>会員ID</th>
-          <th></th>
+          <th><%= @customer.id %></th>
         </tr>
         <tr>
           <th>氏名</th>
-          <th></th>
+          <th><%= f.text_field :last_name, autofocus: true, id:"inputname" %></th>
+          <th><%= f.text_field :first_name, autofocus: true, id:"inputname" %></th>
         </tr>
         <tr>
           <th>フリガナ</th>
-          <th></th>
+          <th><%= f.text_field :last_name_kana, autofocus: true, id:"inputname" %></th>
+          <th><%= f.text_field :first_name_kana, autofocus: true, id:"inputname" %></th>
         </tr>
         <tr>
           <th>郵便番号</th>
-          <th></th>
+          <th><%= f.text_field :post_code, autofocus: true, id:"inputname" %></th>
         </tr>
         <tr>
           <th>住所</th>
-          <th></th>
+          <th><%= f.text_field :address, autofocus: true, id:"inputname" %></th>
         </tr>
         <tr>
           <th>電話番号</th>
-          <th></th>
+          <th><%= f.text_field :phone_number, autofocus: true, id:"inputname" %></th>
         </tr>
         <tr>
           <th>メールアドレス</th>
-          <th></th>
+          <th><%= f.text_field :email, autofocus: true, id:"inputname" %></th>
         </tr>
         <tr>
           <th>会員ステータス</th>
-          <th></th>
+          <th><%= @customer.is_deleted %></th>
         </tr>
         <tr>
-          <th>変更を保存</th>
+          <th> <%= f.submit "変更を保存" %></th>
         </tr>
-     </thead>
-  </table>
+
+ 　　　 </table>
+  <% end %>
+
 
