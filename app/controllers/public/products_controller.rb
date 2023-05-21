@@ -1,10 +1,13 @@
 class Public::ProductsController < ApplicationController
   def index
     @products = Product.all
+    #商品が登録できるようになったら下記を有効にする?
+    #@product = Product.find(params[:id])
   end
 
   def show
-    @products = Product.find(params[:id])
+    @product = Product.find(params[:id])
+    @cart_item = Cart_item.new
   end
   
     # 商品データのストロングパラメータ

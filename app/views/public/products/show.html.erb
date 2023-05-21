@@ -1,15 +1,17 @@
 <table>
   <th>
-    <%= image_tag product.get_image %>
+    <%= image_tag @product.image , size: "50x50"%>
   </th>
   <th>
-    <p><%= product.name %></p>
-    <p><%= product.introduction %></p>
-    <p><%= product.price_without_tax %></p>
+    <p><%= @product.name %></p>
+    <p><%= @product.introduction %></p>
+    <p>¥<%= @product.price_without_tax %>(税込)</p>
   </th>
 </table>
 
 <!-- カートへ追加ボタンの作り方確認要　-->
 <!-- createアクション作成要？ -->
-  <%= form_with model: Product.new do |f| %>
+  <%= form_with model: @cart_item url: cart_items_path, method: :post do |f| %>
+    <%= f.select :count, *[1..100], {include_blank: '個数選択', selected: '個数選択'}%>
+    <%= f.submit "カートに入れる" %>
 	<% end %>

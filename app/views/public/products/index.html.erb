@@ -7,11 +7,12 @@
     <tr>
       <% @products.each do |product| %>
       <td>
-        <%= link_to products_path(product.id) do %>
-          <%= image_tag product.get_image %>
-        <% end %>
+        <!-- 商品投稿ができるようになったら下記を有効にする -->
+        <!-- %= link_to products_path(product.id) do % -->
+          <%= image_tag @products.get_image %> 
+        <!-- % end % -->
         <p><%= product.name %></p>
-        <p><span>¥</span><span><%= product.price_without_tax %></span><span>(税込)</span></p>
+        <p>¥<%= product.price_without_tax %>(税込)</p>
       </td>
       <% end %>
     </tr>
