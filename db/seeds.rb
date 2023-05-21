@@ -40,7 +40,6 @@ Product.create!(
   introduction: "チョコ味",
   price_without_tax: "100",
   is_active: true,
-  image: File.open('app/assets/images/no_image.jpg')
 )
 
 Product.create!(
@@ -49,7 +48,7 @@ Product.create!(
   introduction: "チョコ味",
   price_without_tax: "100",
   is_active: true,
-  image: File.open('app/assets/images/no_image.jpg')
+
 )
 
 p '==================== cart_items create ===================='
