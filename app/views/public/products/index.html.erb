@@ -3,7 +3,7 @@
   <span><h5>(全<%= Product.count %>件)</h5></sapn>
 </div>
 
-<!-- ジャンル検索の部分テンプレートは可能なら作成 -->
+<!-- ジャンル検索の部分テンプレート作成要 -->
 
 <div>
   <table>
@@ -18,7 +18,7 @@
           <% end %>
         <% end %>
         <p><%= product.name %></p>
-        <p>¥<%= product.price_without_tax %>(税込)</p>
+        <p>¥<%= product.add_tax_sales_price.to_s(:dalimited) %>(税込)</p>
       </td>
       <% end %>
     </tr>

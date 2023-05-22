@@ -1,2 +1,38 @@
-<h1>Admin::Products#index</h1>
-<p>Find me in app/views/admin/products/index.html.erb</p>
+<h4>商品一覧</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜き価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+    <tr>
+      <td>
+        <%= product.id %>
+      </td>
+      <td>
+        <%= link_to new_admin_product_path do %>
+          <%= product.name %>
+        <% end %>
+      </td>
+      <td>
+        <%= product.price_without_tax.to_s(:delimited)  %>
+      </td>
+      <td>
+        <!-- ジャンルの取得 関連箇所作成後に動作確認-->
+        <!-- % product.genre.name % -->
+      </td>
+      <td>
+        <!-- ステータスの取得 関連箇所作成後に動作確認-->
+        <!-- % product.sale_status ? '販売中' : '販売停止中' % -->
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

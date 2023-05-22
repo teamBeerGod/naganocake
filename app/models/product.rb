@@ -15,4 +15,9 @@ class Product < ApplicationRecord
     image
   end
 
+#税込金額を表示させるための記述
+  def add_tax_sales_price
+    (self.price_without_tax * 1.10).round
+  end
+
 end

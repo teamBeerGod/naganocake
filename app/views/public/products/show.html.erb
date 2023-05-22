@@ -12,7 +12,7 @@
     <th>
       <p><%= @product.name %></p>
       <p><%= @product.introduction %></p>
-      <p>¥<%= @product.price_without_tax %>(税込)</p>
+      <p>¥<%= @product.add_tax_sales_price.to_s(:dalimited) %>(税込)</p>
     </th>
   </table>
 </div>
