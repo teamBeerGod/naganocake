@@ -3,8 +3,9 @@
   <span><h5>(全<%= Product.count %>件)</h5></sapn>
 </div>
 
-<!-- ジャンル検索の部分テンプレート作成要 -->
+<!-- ジャンル検索の部分テンプレートは可能なら作成 -->
 
+<div>
   <table>
     <tr>
       <% @products.each do |product| %>
@@ -22,3 +23,4 @@
       <% end %>
     </tr>
   </table>
+</div>

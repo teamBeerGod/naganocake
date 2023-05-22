@@ -1,4 +1,5 @@
 class Public::ProductsController < ApplicationController
+  
   def index
     @products = Product.all
   end
@@ -10,7 +11,7 @@ class Public::ProductsController < ApplicationController
   
     # 商品データのストロングパラメータ
   private
-
+  
   def product_params
     params.require(:product).permit(:name, :price_without_tax, :image)
   end
