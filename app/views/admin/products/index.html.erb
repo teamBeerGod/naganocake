@@ -17,7 +17,7 @@
         <%= product.id %>
       </td>
       <td>
-        <%= link_to new_admin_product_path do %>
+        <%= link_to admin_product_path(product.id) do %>
           <%= product.name %>
         <% end %>
       </td>
@@ -25,12 +25,10 @@
         <%= product.price_without_tax.to_s(:delimited)  %>
       </td>
       <td>
-        <!-- ジャンルの取得 関連箇所作成後に動作確認-->
-        <!-- % product.genre.name % -->
+        <%= product.genre.name %>
       </td>
       <td>
-        <!-- ステータスの取得 関連箇所作成後に動作確認-->
-        <!-- % product.sale_status ? '販売中' : '販売停止中' % -->
+        <%= product.is_active ? '販売中' : '販売停止中' %>
       </td>
     </tr>
     <% end %>

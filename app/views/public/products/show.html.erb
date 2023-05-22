@@ -2,18 +2,20 @@
 
 <div>
   <table>
-    <th>
-      <% if @product.image.attached? %>
-          <%= image_tag @product.image, size: "200x200" %>
-        <% else %>
-          <%= image_tag 'no_image', size: "200x200" %>
-      <% end %>
-    </th>
-    <th>
-      <p><%= @product.name %></p>
-      <p><%= @product.introduction %></p>
-      <p>¥<%= @product.add_tax_sales_price.to_s(:dalimited) %>(税込)</p>
-    </th>
+    <tbody>
+      <th>
+        <% if @product.image.attached? %>
+            <%= image_tag @product.image, size: "200x200" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "200x200" %>
+        <% end %>
+      </th>
+      <th>
+        <p><%= @product.name %></p>
+        <p><%= @product.introduction %></p>
+        <p>¥<%= @product.add_tax_sales_price.to_s(:dalimited) %>(税込)</p>
+      </th>
+    </tbody>
   </table>
 </div>
 
