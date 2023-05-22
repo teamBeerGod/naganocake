@@ -19,15 +19,15 @@ Rails.application.routes.draw do
   end
   scope module: :public do
     resources :shipping_addresses, only: [:edit, :create, :update, :destroy]
-    resources :orders, only: [:create, :index, :show, :new]
-    get 'orders/confirm' => 'orders#confirm', as: 'confirm'
+    post 'orders/confirm' => 'orders#confirm', as: 'confirm' # 一時的に画面作成のため一時的にpost=>getに変更
     get 'orders/thanks' => 'orders#thanks', as: 'thanks'
-    resources :cart_items, only: [:index, :destroy, :update, :create]
+    resources :orders, only: [:create, :index, :show, :new]
     get 'cart_items/destroy_all' => 'cart_items#destroy_all', as: 'destroy_all'
-    resources :customers, only: [:edit, :update]
+    resources :cart_items, only: [:index, :destroy, :update, :create]
     get 'customers/mypage' => 'customers#show', as: 'mypage'
     get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     patch 'customers/withdrawal' => 'customers#withdrowal', as: 'withdrowal'
+    resources :customers, only: [:edit, :update]
     resources :sessions, only: [:new, :create, :destroy]
     resources :registrations, only: [:new, :create]
     resources :products, only: [:index, :show]
