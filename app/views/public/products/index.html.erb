@@ -1,2 +1,26 @@
-<h1>Public::Products#index</h1>
-<p>Find me in app/views/public/products/index.html.erb</p>
+<div>
+  <span><h1>商品一覧</h1></span>
+  <span><h5>(全<%= Product.count %>件)</h5></sapn>
+</div>
+
+<!-- ジャンル検索の部分テンプレート作成要 -->
+
+<div>
+  <table>
+    <tr>
+      <% @products.each do |product| %>
+      <td>
+        <%= link_to product_path(product) do %>
+          <% if product.image.attached? %>
+              <%= image_tag product.image, size: "200x200" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "200x200" %>
+          <% end %>
+        <% end %>
+        <p><%= product.name %></p>
+        <p>¥<%= product.add_tax_sales_price.to_s(:dalimited) %>(税込)</p>
+      </td>
+      <% end %>
+    </tr>
+  </table>
+</div>
