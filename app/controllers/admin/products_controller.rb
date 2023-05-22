@@ -1,8 +1,10 @@
 class Admin::ProductsController < ApplicationController
   def index
+    @products = Product.all
   end
 
   def new
+    @product = Product.new
   end
 
   def create
@@ -16,4 +18,11 @@ class Admin::ProductsController < ApplicationController
 
   def update
   end
+  
+  private
+  
+  def product_params
+    params.require(:product).permit(:name, :price_without_tax, :image)
+  end
+  
 end
