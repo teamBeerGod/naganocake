@@ -11,4 +11,8 @@ class CartItem < ApplicationRecord
     (self.product.price_without_tax * 1.10 * self.quantity).round
   end
 
+  def item_exclude?
+
+  end
+
 end
