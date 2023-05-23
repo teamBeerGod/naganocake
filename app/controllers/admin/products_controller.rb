@@ -12,7 +12,7 @@ class Admin::ProductsController < ApplicationController
     @product = Product.new(product_params)
     if @product.save
       #flash[:notice] = "登録が完了しました"
-      redirect_to admin_product_patha(@product)
+      redirect_to admin_product_path(@product)
     #else
       #flash[:alert] = "登録に失敗しました"
       #render :new
@@ -29,9 +29,9 @@ class Admin::ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    if @product.update(item_params)
+    if @product.update(product_params)
       #flash[:notice] = "変更が完了しました"
-      redirect_to admin_product_patha(@product)
+      redirect_to admin_product_path(@product)
     #else
       #flash[:notice] = "登録に失敗しました"
       #render :edit
@@ -41,7 +41,7 @@ class Admin::ProductsController < ApplicationController
   private
   
   def product_params
-    params.require(:product).permit(:name, :introduction, :price_without_tax, :is_active, :image)
+    params.require(:product).permit(:name, :introduction, :price_without_tax, :is_active, :genre_id, :image)
   end
   
 end

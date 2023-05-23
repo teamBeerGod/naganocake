@@ -25,7 +25,10 @@
       </tr>
       <tr>
         <td>税込価格<br>(税抜価格)</td>
-        <td>¥<%= @product.add_tax_sales_price.to_s(:dalimited) %>(税込)</td>
+        <td>
+          <%= @product.add_tax_sales_price.to_s(:dalimited) %>
+          (<%= @product.price_without_tax.to_s(:delimited)  %>)円
+        </td>
       </tr>
       <tr>
         <td>販売ステータス</td>
