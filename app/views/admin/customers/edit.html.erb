@@ -1,4 +1,4 @@
-<h3 class="ml-5">会員詳細</h3>
+<h3 class="ml-5"><%= @customer.full_name %>の会員詳細</h3>
 
  <%= form_with model: [:admin,@customer] do |f| %>
    <table class="table">
@@ -34,8 +34,13 @@
           <th><%= f.text_field :email, autofocus: true, id:"inputname" %></th>
         </tr>
         <tr>
-          <th>会員ステータス</th>
-          <th><%= @customer.is_deleted %></th>
+          <th><%= f.label :is_deleted,"会員ステータス" %></th>
+          <th>
+            <%= f.radio_button :is_deleted, :false, checked: true %>
+            <%= f.label :is_deleted, "有効", value: false %>
+          　<%= f.radio_button :is_deleted, :true %>
+            <%= f.label :is_deleted, "退会", value: true %>
+          </th>
         </tr>
         <tr>
           <th> <%= f.submit "変更を保存" %></th>

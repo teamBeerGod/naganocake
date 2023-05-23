@@ -1,14 +1,16 @@
 class Admin::OrdersController < ApplicationController
   
-  def index
-    @customer = Customer.find(params[:customer_id])
-    @orders = @customer.orders
-  end
-  
   def show
+    @order = Order.find(params[:id])
   end
-  
+
   def update
-    
+   @order = Order.find(params[:id])
   end
+
+  private
+  def order_params
+    params.require(:order).permit(:status)
+  end
+
 end
