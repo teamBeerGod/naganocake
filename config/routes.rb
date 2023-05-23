@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     root :to =>"homes#top"
   end
   scope module: :public do
-    resources :shipping_addresses, only: [:edit, :create, :update, :destroy]
+    resources :shipping_addresses, only: [:index, :edit, :create, :update, :destroy]
     post 'orders/confirm' => 'orders#confirm', as: 'confirm' # 一時的に画面作成のため一時的にpost=>getに変更
     get 'orders/thanks' => 'orders#thanks', as: 'thanks'
     resources :orders, only: [:create, :index, :show, :new]
