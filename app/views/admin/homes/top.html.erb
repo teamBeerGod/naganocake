@@ -6,7 +6,23 @@
       <th>購入日時</th>
       <th>購入者</th>
       <th>注文個数</th>
-      <!-- 余力があれば注文ステータス -->
+      <th>注文ステータス</th>
     </tr>
   </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+    <tr>
+      <td><%= order.created_at.strftime('%Y/%m/%d')%></td>
+      <td><%= "#{order.customer.last_name}"+"#{order.customer.first_name}" %></td>
+      <td><% quantity = 0%><!-- 集計・累積を行うためにquantityの初期化 -->
+            <% order.order_details.each do |order_detail| %><!-- 注文詳細の数だけループ -->
+              <% quantity += order_detail.quantity  %><!-- 注文詳細の数だけ加算をループ、さらに代入し直す-->
+            <% end %>
+            <%= quantity %><!-- %=でquantityの内容を出力 -->
+      </td>
+      <td><%= order.status_i18n %></td>
+    </tr>
+    <% end %>
+  </tbody>
+  
 </table>
