@@ -32,14 +32,20 @@
         </tr>
         <tr>
           <th>会員ステータス</th>
-          <th><%= @customer.is_deleted %></th>
+          <th>
+             <% if @customer.is_deleted == false %>
+               <div>有効</div>
+             <% else %>
+               <div>退会</div>
+             <% end %>
+          </th>
         </tr>
 
      </thead>
      <tbody>
        <tr>
         <th><%= link_to "編集する", edit_admin_customer_path(@customer.id)%>  </th>
-        <th><%= link_to "注文履歴一覧", admin_orders_path(customer_id: @customer.id) %></th>
+        <th><%= "注文履歴一覧" %></th>
        </tr>
      </tbody>
   </table>
