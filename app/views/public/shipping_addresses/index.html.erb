@@ -30,12 +30,18 @@
     </tr>
     <% @shipping_addresses.each do |address| %>
       <tr>
-        <td><%= address.post_code %></td>
+        <td><%= address.post_code.to_s.insert(3, "-") %></td>
         <td><%= address.address %></td>
         <td><%= address.delivery_name %></td>
         <td>
-          <%= link_to "編集する", edit_shipping_address_path(address), class: "btn" %>
-          <%= link_to "削除する", shipping_address_path(address), method: :delete, class: "btn" %>
+          <%= link_to edit_shipping_address_path(address) do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to shipping_address_path(address), method: :delete do %>
+            <i class="fas fa-trash"></i>
+          <% end %>
         </td>
       </tr>
     <% end %>
