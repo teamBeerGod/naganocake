@@ -13,4 +13,5 @@ class OrderDetail < ApplicationRecord
   def calc_subtotal
     (self.price_including_tax * self.quantity).round
   end
+
 end
