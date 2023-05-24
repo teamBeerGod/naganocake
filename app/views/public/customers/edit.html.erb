@@ -1,6 +1,6 @@
 <div>
   <div>
-    <%= render 'error', customer: @customer %>
+    <%#= render 'error', customer: @customer %>
   </div>
   <div >
     <h3><span class="border-bottom border-dark">会員情報編集</span></h3>
@@ -50,7 +50,7 @@
       <div >
         <%= f.submit "編集内容を保存", class:"col btn btn-success" %>
       </div>
-      <div><%= link_to "退会する", unsubscribe_customers_path, class: "btn btn-danger" %></div>
+      <div><%= link_to "退会する", unsubscribe_path, class: "btn btn-danger" %></div>
     </div>
   <% end %>
 </div>
