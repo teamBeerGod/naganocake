@@ -9,14 +9,14 @@
       <td>小計</td>
     </tr>
     <% total_cost = 0 %>
-    <% @cart_items.each do |item| %>
+    <% @order_details.each do |order_detail| %>
       <tr>
-        <td><%= item.product.name %></td>
-        <td><%= item.add_tax %> 円</td>
-        <td><%= item.quantity %></td>
-        <td><%= item.calc_subtotal %> 円</td>
+        <td><%= order_detail.product.name %></td>
+        <td><%= order_detail.price_including_tax %> 円</td>
+        <td><%= order_detail.quantity %></td>
+        <td><%= order_detail.calc_subtotal %> 円</td>
       </tr>
-      <% total_cost += (item.calc_subtotal*item.quantity) %>
+      <% total_cost += order_detail.calc_subtotal %>
     <% end %>
   </table>
 </div>
@@ -42,14 +42,14 @@
 <table class="table">
   <tr>
     <td>注文日</td>
-    <td>date</td>
+    <td><%= @order.created_at %></td>
   </tr>
   <tr>
     <td>配送先</td>
-    <td>address</td>
+    <td><%= @order.address_display %></td>
   </tr>
   <tr>
     <td>支払い方法</td>
-    <td>method</td>
+    <td><%= Order.payment_methods_i18n[@order.payment_method] %></td>
   </tr>
 </table>

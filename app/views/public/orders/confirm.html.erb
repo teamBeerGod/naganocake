@@ -16,7 +16,7 @@
         <td><%= item.quantity %></td>
         <td><%= item.calc_subtotal %> 円</td>
       </tr>
-      <% total_cost += (item.calc_subtotal*item.quantity) %>
+      <% total_cost += item.calc_subtotal %>
     <% end %>
   </table>
 </div>
@@ -33,7 +33,7 @@
     </tr>
     <tr>
       <td>ご請求額</td>
-      <td><%= total_cost + @order.shipping_cost %> 円</td>
+      <td><%= @order.billing_amount = total_cost + @order.shipping_cost %> 円</td>
     </tr>
   </table>
 </div>
@@ -44,18 +44,18 @@
 </div>
 <div>
   <h5>お届け先</h5>
-  〒<%= @order.post_code %> <%= @order.address %><br>
+  〒<%= @order.post_code.to_s.insert(3, "-") %> <%= @order.address %><br>
   <%= @order.name %>
 </div>
 
 <!--create-->
 <%= form_with model: @order, url: "/orders", method: :post do |f| %>
-  <%= f.hidden_field :customer_id, value: 1 %> <!--current_customer.id-->
+  <%= f.hidden_field :customer_id, value: current_customer.id %>
   <%= f.hidden_field :post_code, value: @order.post_code %>
   <%= f.hidden_field :address, value: @order.address %>
   <%= f.hidden_field :name, value: @order.name  %>
   <%= f.hidden_field :payment_method, value: @order.payment_method %>
-  <%= f.hidden_field :total_cost, value: total_cost  %>
+  <%= f.hidden_field :billing_amount, value: @order.billing_amount  %>
   <%= f.hidden_field :shipping_cost, value: @order.shipping_cost  %>
   <%= f.submit "注文を確定する" %>
 <% end %>

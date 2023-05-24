@@ -1,7 +1,9 @@
 <h2>ログイン</h2>
 <h3>会員の方はこちらからログイン</h3>
 
+
 <%= form_with model: @customer, url: customer_session_path do |f| %>
+
   <div class="field">
     <%= f.label :メールアドレス %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>

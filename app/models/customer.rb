@@ -12,4 +12,8 @@ class Customer < ApplicationRecord
     self.last_name + " " + self.first_name
   end
 
+  def address_display
+    "〒#{post_code.to_s.insert(3, "-")} #{address}" + "  "+ self.full_name
+  end
+  
 end
