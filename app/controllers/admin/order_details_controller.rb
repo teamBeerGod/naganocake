@@ -4,9 +4,9 @@ def update
     @order_detail = OrderDetail.find(params[:id])
     @order = @order_detail.order
    if @order_detail.update(order_detail_params)
-    if @order.order_detail.where(making_status: "in_production").exists?
+    if @order.order_details.where(making_status: "in_production").exists?
        @order.update(status: 2)
-    elsif @order.order_detail.where(making_status: "done").count == @order.order_detail.count
+    elsif @order.order_details.where(making_status: "done").count == @order.order_detail.count
        @order.update(status: 3)
     end
 
