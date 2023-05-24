@@ -11,6 +11,6 @@ class Order < ApplicationRecord
     preparing_to_ship: 3,
     done: 4
   }
-
+  
 
 end
