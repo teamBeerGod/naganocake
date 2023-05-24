@@ -1,5 +1,5 @@
 <div class="new_shipping_address">
-  <%= form_with model: @shipping_addres, url: "/shipping_addresses/:id", method: :patch do |f| %>
+  <%= form_with model: @shipping_address do |f| %>
     <table>
       <tr>
         <th>郵便番号(ハイフンなし)</th>
@@ -14,6 +14,6 @@
         <th><%= f.text_field :delivery_name, class: "form-controll", size: 15  %></th>
       </tr>
     </table>
-    <%= f.submit "編集" %>
+    <%= f.submit "変更" %>
   <% end %>
 </div>

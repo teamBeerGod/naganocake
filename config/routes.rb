@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     post 'orders/confirm' => 'orders#confirm', as: 'confirm' # 一時的に画面作成のため一時的にpost=>getに変更
     get 'orders/thanks' => 'orders#thanks', as: 'thanks'
     resources :orders, only: [:create, :index, :show, :new]
-    get 'cart_items/destroy_all' => 'cart_items#destroy_all', as: 'destroy_all'
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all', as: 'destroy_all'
     resources :cart_items, only: [:index, :destroy, :update, :create]
     get 'customers/mypage' => 'customers#show', as: 'mypage'
     get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'

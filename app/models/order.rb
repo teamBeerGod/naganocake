@@ -12,5 +12,13 @@ class Order < ApplicationRecord
     done: 4
   }
 
+  def address_display
+    "〒#{self.post_code.to_s.insert(3, "-")} #{self.address} #{self.name}"
+  end
+
+  def address_display2
+    "〒#{self.post_code.to_s.insert(3, "-")} #{self.address}"
+  end
+
 
 end
