@@ -6,17 +6,26 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Slackside+One&display=swap" rel="stylesheet">
+    
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+
+
   <body class="d-flex flex-column vh-100">
     <header class="p-0.5 mb-2 bg-dark text-white">
       <nav class="navbar navbar-expand-lg navbar-light">
+        <h1>
+          <%= link_to root_path,class:"logo" do %>
+            <%= 'nagano cake' %>
+          <% end %>
+        </h1>
         <div class="container">
-    
-          <div  class="user-name text-dark center-block">
+          <div  class="user-name text-white center-block">
               <% if customer_signed_in? %>
                 ようこそ、<%= current_customer.last_name %>さん！
               <% end %>
@@ -26,7 +35,7 @@
             <ul class="navbar-nav ml-auto">
               <% if customer_signed_in? %>
                   <li class="nav-item">
-                    <%= link_to "マイページ",customer_path, class: 'nav-link' %>
+                    <%= link_to "マイページ",customer_path, class: 'nav-link text-light' %>
                   </li>
                   <li class="nav-item">
                     <%=  link_to "商品一覧", products_path, class: 'nav-link text-light' %>
@@ -55,16 +64,16 @@
                   </li>
               <% else %>
                   <li class="nav-item">
-                    <%= link_to "About", about_path,class: 'nav-link text-dark' %>
+                    <%= link_to "About", about_path,class: 'nav-link text-light' %>
                   </li>
                   <li class="nav-item">
-                     <%=  link_to "商品一覧", products_path, class: 'nav-link text-dark' %>
+                     <%=  link_to "商品一覧", products_path, class: 'nav-link text-light' %>
                   </li>
                   <li class="nav-item">
-                    <%= link_to "新規登録", new_customer_registration_path,class: 'nav-link text-dark' %>
+                    <%= link_to "新規登録", new_customer_registration_path,class: 'nav-link text-light' %>
                   </li>
                   <li class="nav-item">
-                    <%= link_to "ログイン", new_customer_session_path ,class: 'nav-link text-dark' %>
+                    <%= link_to "ログイン", new_customer_session_path ,class: 'nav-link text-light' %>
                   </li>
               <% end %>
             </ul>
