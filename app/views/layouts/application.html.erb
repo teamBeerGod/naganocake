@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Slackside+One&display=swap" rel="stylesheet">
-    
+
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -30,7 +30,7 @@
                 ようこそ、<%= current_customer.last_name %>さん！
               <% end %>
           </div>
-    
+
           <div>
             <ul class="navbar-nav ml-auto">
               <% if customer_signed_in? %>
