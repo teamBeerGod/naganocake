@@ -6,7 +6,7 @@ class Public::SessionsController < Devise::SessionsController
 
 
   def after_sign_in_path_for(resource)
-    customer_path(current_customer)
+        mypage_path
   end
 
   def after_sign_out_path_for(resource)
