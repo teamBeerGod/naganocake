@@ -7,13 +7,24 @@
             会員でない方も商品の閲覧はできますが、</br>
             購入には会員登録が必要になります。
           </p>
-        </div>
+
+
+     <h2 >新着商品</h2>
+      <div >
+        <% @product.each do |product| %>
+             <div>
+              <%= link_to product_path(product) do %>
+                <div>
+                  <div><%= image_tag product.get_image(200,150) %></div></br>
+
+                    <h6><%= product.name %></h6>
+                    <p > ¥<%= product.add_tax_sales_price.to_s(:delimited) %></p>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+        <% end %>
       </div>
 
-    <h3>新着商品</h3>
 
-     <%= image_tag 'no_image.jpg' %>
-      <%= image_tag 'no_image.jpg' %>
-       <%= image_tag 'no_image.jpg' %>
-
-         <div ><%= link_to "全ての商品を見る" %></div>
+         <div><%= link_to "全ての商品を見る", products_path %></div>

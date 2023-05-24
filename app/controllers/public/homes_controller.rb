@@ -1,6 +1,6 @@
 class Public::HomesController < ApplicationController
   def top
-   # @items = Item.where(is_sale: true).reverse_order
+   @product= Product.limit(4).order(created_at: "DESC")
   end
 
   def about
