@@ -14,11 +14,11 @@
     <tr>
       <td><%= order.created_at.strftime('%Y/%m/%d')%></td>
       <td><%= "#{order.customer.last_name}"+"#{order.customer.first_name}" %></td>
-      <td><% quantity = 0%><!-- 集計・累積を行うためにquantityの初期化 -->
-            <% order.order_details.each do |order_detail| %><!-- 注文詳細の数だけループ -->
-              <% quantity += order_detail.quantity  %><!-- 注文詳細の数だけ加算をループ、さらに代入し直す-->
+      <td><% quantity = 0%>
+            <% order.order_details.each do |order_detail| %>
+              <% quantity += order_detail.quantity  %>
             <% end %>
-            <%= quantity %><!-- %=でquantityの内容を出力 -->
+            <%= quantity %>
       </td>
       <td><%= order.status_i18n %></td>
     </tr>
