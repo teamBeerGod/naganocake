@@ -39,7 +39,7 @@ Product.create!(
   name: "チョコケーキ",
   introduction: "チョコ味",
   price_without_tax: "100",
-  is_active: true,
+  is_active: true
 )
 
 Product.create!(
@@ -47,8 +47,7 @@ Product.create!(
   name: "チョコクッキー",
   introduction: "チョコ味",
   price_without_tax: "100",
-  is_active: true,
-
+  is_active: true
 )
 
 p '==================== cart_items create ===================='

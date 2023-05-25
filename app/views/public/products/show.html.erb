@@ -1,2 +1,40 @@
-<h1>Public::Products#show</h1>
-<p>Find me in app/views/public/products/show.html.erb</p>
+<!-- ジャンル検索の部分テンプレートは可能なら作成 -->
+
+<div class="container mt-5">
+  <div class="row">
+
+    <div class="col-3 mr-5">
+    </div>
+    
+<div>
+  <table>
+    <tbody>
+      <th>
+        <% if @product.image.attached? %>
+            <%= image_tag @product.image, size: "200x200" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "200x200" %>
+        <% end %>
+      </th>
+      <th>
+        <p><%= @product.name %></p>
+        <p><%= @product.introduction %></p>
+        <p>¥<%= @product.add_tax_sales_price.to_s(:dalimited) %>(税込)</p>
+      </th>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <% if customer_signed_in? %>
+    <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+      <%= f.hidden_field :product_id, :value => @product.id %>
+      <%= f.hidden_field :customer_id, :value => current_customer.id %>
+      <%= f.select :quantity, *[1..100], {include_blank: '個数選択', selected: '個数選択'}%>
+      <%= f.submit "カートに入れる" %>
+    <% end %>
+	<% end %>
+</div>
+
+  </div>
+</div>

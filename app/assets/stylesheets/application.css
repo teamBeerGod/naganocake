@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+.logo {
+  font-family: 'Slackside One', cursive;
+}
+
+.back {
+  background:#FFFFF0;
+}
