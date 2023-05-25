@@ -1,9 +1,9 @@
-<div>
-  <span><h1>商品一覧</h1></span>
-  <span><h5>(全<%= Product.count %>件)</h5></sapn>
-</div>
+<div class="container mt-5">
+  <div class="row">
 
-<!-- ジャンル検索の部分テンプレート作成要 -->
+<div class="col-md-9">
+  <h2>商品一覧<small>(全<%= Product.count %>件)</small></h2>
+</div>
 
 <div>
   <table>
@@ -21,6 +21,10 @@
         <p>¥<%= product.add_tax_sales_price.to_s(:dalimited) %>(税込)</p>
       </td>
       <% end %>
+      <%= paginate @products %>
     </tr>
   </table>
+</div>
+
+  </div>
 </div>
