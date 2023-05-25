@@ -63,7 +63,7 @@
   <div class="row">
     <div class="col-10 text-center">
       <% if CartItem.exists?(customer_id: current_customer.id)%>
-      <%= llink_to "レジに進む", new_order_path, class:"btn btn-success" %>
+      <%= link_to "レジに進む", new_order_path, class:"btn btn-success" %>
       <% end %>
     </div>
   </div>
