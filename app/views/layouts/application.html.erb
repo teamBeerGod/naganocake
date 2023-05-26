@@ -6,9 +6,9 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300&display=swap" rel="stylesheet">
     
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -27,7 +27,7 @@
               <% end %>
             </h5>
           </div>
-    
+
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
               <% if customer_signed_in? %>
@@ -82,17 +82,17 @@
               <%= f.submit '検索', class: "btn btn-outline-dark btn-sm"%>
             <% end %>
           </div>
-          
+
         </div>
       </nav>
     </header>
-    
+
     <div>
       <main class="mb-auto">
         <%= yield %>
       </main>
     </div>
-    
+
     <footer>
       <div class="container mt-5" >
         <div class="row">
