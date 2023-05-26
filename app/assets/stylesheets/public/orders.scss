@@ -1,3 +1,35 @@
-// Place all the styles related to the public/orders controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
+
+h4.thank_tag {
+  text-align: center;
+  font-family: "Paytone One";
+  color: #202020;
+  text-transform: uppercase;
+  > span {
+    display: block;
+    margin: 20px 0 20px 0;
+    font-size: 7rem;
+    line-height: 80px;
+    color: #f1ebe5;
+    text-shadow: 0 13.36px 8.896px #c4b59d,0 -2px 1px #fff;
+    letter-spacing: -10px;
+  }
+  > span.minus_margin {
+      margin-top: -20px;
+    }
+}
+
+h6.thank_tag {
+  text-align: center;
+  font-family: "Paytone One";
+  color: #202020;
+  > span {
+    display: block;
+    margin: -10px 0 -10px 0;
+    font-size: 5rem;
+    line-height: 80px;
+    color: #f1ebe5;
+    text-shadow: 0 13.36px 8.896px #c4b59d,0 -2px 1px #fff;
+    letter-spacing: -8px;
+  }
+}

@@ -72,8 +72,8 @@
     <%= f.hidden_field :address, value: @order.address %>
     <%= f.hidden_field :name, value: @order.name  %>
     <%= f.hidden_field :payment_method, value: @order.payment_method %>
-    <%= f.hidden_field :billing_amount, value: @order.billing_amount  %>
-    <%= f.hidden_field :shipping_cost, value: @order.shipping_cost  %>
-    <%= f.submit "注文を確定する" %>
+    <%= f.hidden_field :billing_amount, value: @order.billing_amount %>
+    <%= f.hidden_field :shipping_cost, value: @order.shipping_cost %>
+    <%= f.submit "注文を確定する",class:'btn btn-success', "data-confirm"=>"注文を確定しますか？"  %>
   <% end %>
 </div>

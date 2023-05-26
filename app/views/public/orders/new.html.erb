@@ -8,7 +8,7 @@
     <div class="col-lg-12">
 
     <%= form_with model: @order, url: "/orders/confirm", method: :post do |f| %>
-    <h4 class="font-weight-bold">支払方法</h4>
+      <h4 class="font-weight-bold">支払方法</h4>
       <div class="form-group">
         <%= f.radio_button :payment_method, Order.payment_methods.key(0), checked: "checked" %>
         <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
@@ -32,7 +32,11 @@
           <%= f.radio_button :selection_address, 1 %>
           <%= f.label :selection_address_1, "登録済住所から選択" %>
         </div>
-        <%= f.select :shipping_address_id, options_from_collection_for_select(ShippingAddress.all, :id, :address_display) %>
+        <% if @shipping_addresses.present? %>
+          <%= f.select :shipping_address_id, options_from_collection_for_select(@shipping_addresses, :id, :address_display) %>
+        <% else %>
+          登録されていません。
+        <% end %>
       </div>
 
       <div>
@@ -66,8 +70,6 @@
       <div class="col-10 text-center">
         <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
       </div>
-
     <% end %>
-
-    </div>
   </div>
+</div>
