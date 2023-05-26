@@ -6,7 +6,7 @@ def update
    if @order_detail.update(order_detail_params)
     if @order.order_details.where(making_status: "in_production").exists?
        @order.update(status: 2)
-    elsif @order.order_details.where(making_status: "done").count == @order.order_detail.count
+    elsif @order.order_details.where(making_status: "done").count == @order.order_details.count
        @order.update(status: 3)
     end
 
