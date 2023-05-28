@@ -2,7 +2,7 @@ class Public::CustomersController < ApplicationController
   def show
 
      @customer = current_customer
-     
+
   end
 
   def edit
@@ -12,7 +12,7 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = current_customer
     if @customer.update(customer_params)
-      redirect_to customer_path(current_customer.id), notice: "編集に成功しました。"
+      redirect_to  mypage_path, notice: "編集に成功しました。"
     else
       render :edit
     end
