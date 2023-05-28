@@ -3,7 +3,7 @@ class Public::OrdersController < ApplicationController
     cart_items = current_customer.cart_items
     if cart_items.present?
       @order = Order.new
-      @shipping_addresses = ShippingAddress.all
+      @shipping_addresses = current_customer.shipping_addresses
     else
       flash[:notice] = "カートが空です"
       redirect_to request.referer
@@ -28,6 +28,7 @@ class Public::OrdersController < ApplicationController
     end
     @cart_items = current_customer.cart_items
     @order.shipping_cost = 800
+
   end
 
   def thanks
