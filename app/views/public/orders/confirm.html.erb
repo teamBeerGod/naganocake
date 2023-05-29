@@ -1,2 +1,79 @@
-<h1>Public::Orders#confirm</h1>
-<p>Find me in app/views/public/orders/confirm.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h3 class="col-3 bg-light text-center">注文情報確認</h3>
+  </div>
+
+  <div class="row">
+    <div class="col-8">
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <th class="col-4">商品名</th>
+          <th class="col-2">単価（税込み）</th>
+          <th class="col-2">数量</th>
+          <th class="col-2">小計</th>
+        </thead>
+
+        <% total_cost = 0 %>
+
+        <tbody>
+          <% @cart_items.each do |item| %>
+          <tr>
+            <td><%= item.product.name %></td>
+            <td>¥<%= item.add_tax %> </td>
+            <td><%= item.quantity %></td>
+            <td>¥<%= item.calc_subtotal %> </td>
+          </tr>
+          <% total_cost += item.calc_subtotal %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-3">
+      <table class="table table-bordered">
+        <tr>
+          <th class="bg-light">送料</th>
+          <td>¥<%= @order.shipping_cost %></td>
+        </tr>
+        <tr>
+          <th class="bg-light">商品合計</th>
+          <td>¥<%= total_cost.to_s(:delimited, delimiter: ',') %></td>
+        </tr>
+        <tr>
+          <th class="bg-light">ご請求額</th>
+          <td>¥<%= @order.billing_amount = total_cost + @order.shipping_cost %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-8">
+      <table class="table table-bordered">
+        <tr>
+          <th class="bg-light col-3">支払い方法</th>
+          <td><%= Order.payment_methods_i18n[@order.payment_method] %></td>
+        </tr>
+        <tr>
+          <th class="bg-light col-3">お届け先</th>
+          <td>
+            〒<%= @order.post_code.to_s.insert(3, "-") %> <%= @order.address %><br>
+            <%= @order.name %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!--create-->
+  <%= form_with model: @order, url: "/orders", method: :post do |f| %>
+    <%= f.hidden_field :customer_id, value: current_customer.id %>
+    <%= f.hidden_field :post_code, value: @order.post_code %>
+    <%= f.hidden_field :address, value: @order.address %>
+    <%= f.hidden_field :name, value: @order.name  %>
+    <%= f.hidden_field :payment_method, value: @order.payment_method %>
+    <%= f.hidden_field :billing_amount, value: @order.billing_amount %>
+    <%= f.hidden_field :shipping_cost, value: @order.shipping_cost %>
+    <%= f.submit "注文を確定する",class:'btn btn-success', "data-confirm"=>"注文を確定しますか？"  %>
+  <% end %>
+</div>
